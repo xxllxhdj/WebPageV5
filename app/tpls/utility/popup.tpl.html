@@ -1,0 +1,14 @@
+<div class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content popup">
+            <div class="modal-header" ng-show="title">
+                <button class="btn modal-close" ng-click="$hide()"><span>&times;</span></button>
+                <h4 class="modal-title" ng-bind="title"></h4>
+            </div>
+            <div class="modal-body" ng-bind="content"></div>
+            <div class="modal-footer">
+                <button ng-repeat="button in buttons" ng-click="$hide();$buttonTapped(button, $event)" class="btn" ng-class="button.type">{{button.text}}</button>
+            </div>
+        </div>
+    </div>
+</div>

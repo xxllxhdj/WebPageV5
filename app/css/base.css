@@ -1,0 +1,192 @@
+
+/**********************************************************Common******************************************************/
+
+body {
+    background: #ededed;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+    outline: 0;
+}
+
+input[type="checkbox"] {
+    margin: 0;
+}
+input[type="checkbox"]:focus {
+    outline: 0;
+}
+.checkbox input[type="checkbox"] {
+    margin-left: -27px;
+}
+.checkbox label {
+    padding-left: 27px;
+}
+.checkbox input {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    display: block;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+.checkbox input:before {
+    display: table;
+    width: 100%;
+    height: 100%;
+    background: #ccc;
+    content: ' ';
+    -webkit-transition: background-color 20ms ease-in-out;
+    transition: background-color 20ms ease-in-out; 
+}
+.checkbox input:checked:before {
+    border-width: 2px; 
+}
+.checkbox input:after {
+    -webkit-transition: opacity 0.05s ease-in-out;
+    transition: opacity 0.05s ease-in-out;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 30%;
+    left: 18%;
+    display: table;
+    width: 12px;
+    height: 6px;
+    border: 2px solid #fff;
+    border-top: 0;
+    border-right: 0;
+    content: ' ';
+    opacity: 0;
+}
+.checkbox input:checked:after {
+    opacity: 1; 
+}
+
+/**********************************************************Common******************************************************/
+
+/*********************************************************loading******************************************************/
+
+.loading {
+    background-color: transparent;
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.loading-a {
+     width: 100%;
+     margin: 5px auto;
+     text-align: center;
+ }
+.loading-a > img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+.loading-a .loading-thumb {
+    position: absolute;
+    left: 50%;
+    margin-left: -50px;
+    width: 100px;
+    height: 100px;
+    border-top: 4px solid #35CCF9;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid transparent;
+    border-radius: 50%;
+    -webkit-animation: 1000ms infinite loading-rotate linear;
+    animation: 1000ms infinite loading-rotate linear;
+}
+
+@-webkit-keyframes loading-rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes loading-rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+/*********************************************************loading******************************************************/
+
+/**********************************************************alert*******************************************************/
+
+.alert.alert-custom {
+    color: #fff;
+    background-color: #76c2e6;
+    border-color: #76c2e6;
+}
+
+/**********************************************************alert*******************************************************/
+
+/**********************************************************popup*******************************************************/
+
+.modal-open .view-container {
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -ms-filter: blur(2px);    
+    filter: blur(2px);
+}
+
+.modal.center .modal-dialog {
+    width: auto;
+}
+.popup {
+    border-radius: 0;
+    background: #ededed;
+}
+.popup .modal-header,
+.popup .modal-footer {
+    border: none;
+}
+.popup .modal-header .modal-close {
+    float: right;
+    font-size: 36px;
+    font-weight: normal;
+    line-height: 0.5;
+    filter: alpha(opacity=40);
+    opacity: .4;
+    background: transparent;
+    padding: 2px 0;
+}
+.popup .modal-footer .btn {
+    min-width: 75px;
+    border: none;
+    color: #fff;
+    border-radius: 0;
+    font-weight: bold;
+}
+
+.button-ok {
+    background: #76c2e6;
+}
+.button-ok:hover {
+    background: #2da0d9;
+}
+.button-cancel {
+    background: #ccc;
+}
+.button-cancel:hover {
+    background: #7d7d7d;
+}
+
+/**********************************************************popup*******************************************************/

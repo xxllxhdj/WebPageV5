@@ -1,0 +1,28 @@
+{
+  "name": "WebPageV5",
+  "version": "1.0.0",
+  "authors": [
+    "xuxl <xuxle@yonyou.com>"
+  ],
+  "main": "server.js",
+  "license": "ISC",
+  "devDependencies": {
+    "angular": "~1.4.7",
+    "angular-animate": "~1.4.7",
+    "angular-cookies": "~1.4.8",
+    "angular-motion": "~0.4.3",
+    "angular-strap": "~2.3.6",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.5",
+    "bootstrap-additions": "~0.3.1"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "less/bootstrap.less",
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    }
+  }
+}
