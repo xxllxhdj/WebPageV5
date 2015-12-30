@@ -1,7 +1,7 @@
 
 <div class="signin">
     <div class="signin-form-container">
-        <form name="userForm" ng-submit="signin()" class="signin-form">
+        <form name="userForm"class="signin-form">
             <div class="form-group input-group">
                 <span class="input-group-addon">
                     <img src="img/icon_user.png">
@@ -19,8 +19,8 @@
                 <a href="/User/ResetPassword">忘记密码？</a>
             </div>
             <div class="text-center form-group submit-btn-group sigin-btn-group">
-                <button type="submit" class="btn">登录</button>
-                <button class="btn">注册</button>
+                <button class="btn" ng-click="signin()">登录</button>
+                <button class="btn" ng-click="signup()">注册</button>
             </div>
         </form>
     </div>

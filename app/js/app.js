@@ -8,8 +8,13 @@ angular.module('angularWeb', ['ngAnimate', 'ui.router', 'ngCookies', 'mgcrea.ngS
             $stateProvider
                 .state('signin', {
                     url: '/signin',
-                    templateUrl: 'tpls/signin.html',
+                    templateUrl: 'tpls/user/signin.html',
                     controller: 'SigninController'
+                })
+                .state('signup', {
+                    url: '/signup',
+                    templateUrl: 'tpls/user/signup.html',
+                    controller: 'SignupController'
                 })
                 .state('index', {
                     url: '/index',
