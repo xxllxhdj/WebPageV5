@@ -1,10 +1,6 @@
 
 /**********************************************************Common******************************************************/
 
-body {
-    background: #ededed;
-}
-
 .btn:focus,
 .btn:active:focus,
 .btn.active:focus,
@@ -67,6 +63,18 @@ input[type="checkbox"]:focus {
 }
 .checkbox input:checked:after {
     opacity: 1; 
+}
+
+.submit-btn-group .btn {
+    color: #fff;
+    background-color: #fea85d;
+    border-color: #fea85d;
+}
+.submit-btn-group .btn:hover,
+.submit-btn-group .btn:focus {
+    color: #fff;
+    background-color: #fc7704;
+    border-color: #fc7704;
 }
 
 /**********************************************************Common******************************************************/

@@ -19,6 +19,16 @@
     float: left;
 }
 
+.main-navbar .bar-text {
+    float: left;
+    margin-right: 15px;
+    margin-left: 15px;
+    padding: 13px 15px;
+    font-size: 18px;
+    height: 50px;
+    color: #9d9d9d;
+}
+
 .navbar-header .navbar-toggle-btn {
     height: 50px;
     padding: 0;
@@ -59,15 +69,25 @@
 /*********************************************************signin*******************************************************/
 
 .signin {
-    border-top: 5px solid #68bde2;
+    position: relative;
+    margin-top: 88px;
+    min-width: 1000px;
+    height: 600px;
+    background: #ededed;
 }
 .signin .container {
     margin-top: 100px;
 }
 
 .signin-form-container {
+    position: absolute;
     width: 300px;
-    margin: 0 auto;
+    padding: 15px;
+    top: 204px;
+    left: 50%;
+    margin-left: 90px;
+    background: #fff;
+    border-radius: 4px;
 }
 
 .signin-logo-ct {
@@ -75,22 +95,23 @@
     margin: 0 0 30px;
 }
 
-.btn-signin {
-    color: #fff;
-    background-color: #fea85d;
-    border-color: #fea85d;
-}
-.btn-signin:hover,
-.btn-signin:focus {
-    color: #fff;
-    background-color: #fc7704;
-    border-color: #fc7704;
-}
-
 .signin-form .checkbox {
     margin-left: 27px;
 }
 .signin-form .checkbox > a {
+    float: right;
+}
+.signin-form .form-group:last-child {
+    margin-bottom: 0;
+}
+
+.sigin-btn-group .btn {
+    width: 130px;
+}
+.sigin-btn-group .btn:first-child {
+    float: left;
+}
+.sigin-btn-group .btn:last-child {
     float: right;
 }
 
