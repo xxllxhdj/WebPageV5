@@ -34,7 +34,7 @@ module.exports.start = function start(callback) {
 
             // Logging initialization
             console.log('--');
-            console.log(chalk.green('实时数据采集系统'));
+            console.log(chalk.green('WebPageV5'));
             console.log(chalk.green('Environment:\t\t\t' + process.env.NODE_ENV));
             console.log(chalk.green('Port:\t\t\t\t' + config.port));
             console.log(chalk.green('Database:\t\t\t\t' + config.db.uri));

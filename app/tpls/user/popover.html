@@ -1,0 +1,17 @@
+<div class="popover user-popover">
+    <div class="arrow"></div>
+    <div class="popover-content">
+        <div class="user-profile">
+            <div class="profile-wrapper">
+                <img ng-src="{{data.user.photo}}">
+                <span>{{data.user.username}}</span>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="list-group clearfix">
+                <a class="list-group-item" ng-click="$hide()">个人设置</a>
+                <a class="list-group-item" ng-click="signout();$hide()">注销</a>
+            </div>
+        </div>
+    </div>
+</div>

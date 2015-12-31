@@ -16,6 +16,11 @@ angular.module('angularWeb', ['ngAnimate', 'ui.router', 'ngCookies', 'mgcrea.ngS
                     templateUrl: 'tpls/user/signup.html',
                     controller: 'SignupController'
                 })
+                .state('resetpassword', {
+                    url: '/resetpassword',
+                    templateUrl: 'tpls/user/resetpassword.html',
+                    controller: 'ResetPasswordController'
+                })
                 .state('index', {
                     url: '/index',
                     abstract: true,

@@ -18,7 +18,7 @@
             </ul>
         </div>
         <div class="navbar-right-side">
-            <div class="user-card" ng-if="data.user">
+            <div class="user-card" ng-if="data.user" data-placement="bottom" data-template-url="tpls/user/popover.html" data-auto-close="1" bs-popover>
                 <img ng-src="{{data.user.photo}}">
             </div>
         </div>

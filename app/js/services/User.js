@@ -50,6 +50,12 @@ angular.module('angularWeb')
 
                 return defer.promise;
             };
+            o.getAuthCode = function (usercode) {
+                return forgotPassword(usercode);
+            };
+            o.resetPassword = function (token, newPassword, verifyPassword) {
+                return resetPassword(token, newPassword, verifyPassword);
+            };
 
             o.getProfile = function () {
                 return profile ? angular.copy(profile) : null;
@@ -87,6 +93,76 @@ angular.module('angularWeb')
                 $http({
                     method: 'GET',
                     url: APPCONSTANTS.getmeURL,
+                    timeout: APPCONSTANTS.httpTimeOut
+                }).success(function (result) {
+                    if (result.status === '0000') {
+                        defer.resolve(result);
+                    } else {
+                        defer.reject(result);
+                    }
+                }).error(function (error) {
+                    defer.reject(error);
+                });
+
+                return defer.promise;
+            }
+            function forgotPassword (usercode) {
+                var defer = $q.defer();
+
+                $http({
+                    method: 'POST',
+                    url: APPCONSTANTS.forgotPasswordURL,
+                    data: {
+                        usercode: usercode
+                    },
+                    timeout: 30000
+                }).success(function (result) {
+                    if (result.status === '0000') {
+                        defer.resolve(result);
+                    } else {
+                        defer.reject(result);
+                    }
+                }).error(function (error) {
+                    defer.reject(error);
+                });
+
+                return defer.promise;
+            }
+            function resetPassword (token, newPassword, verifyPassword) {
+                var defer = $q.defer();
+
+                $http({
+                    method: 'POST',
+                    url: APPCONSTANTS.resetPasswordURL,
+                    data: {
+                        token: token,
+                        newPassword: newPassword,
+                        verifyPassword: verifyPassword
+                    },
+                    timeout: APPCONSTANTS.httpTimeOut
+                }).success(function (result) {
+                    if (result.status === '0000') {
+                        defer.resolve(result);
+                    } else {
+                        defer.reject(result);
+                    }
+                }).error(function (error) {
+                    defer.reject(error);
+                });
+
+                return defer.promise;
+            }
+            function changePassword (oldPassword, newPassword, verifyPassword) {
+                var defer = $q.defer();
+
+                $http({
+                    method: 'POST',
+                    url: APPCONSTANTS.changePasswordURL,
+                    data: {
+                        oldPassword: oldPassword,
+                        newPassword: newPassword,
+                        verifyPassword: verifyPassword
+                    },
                     timeout: APPCONSTANTS.httpTimeOut
                 }).success(function (result) {
                     if (result.status === '0000') {

@@ -1,7 +1,7 @@
 
 angular.module('angularWeb')
-    .controller('NavBarController', ['$scope', 'User', 'Initialization', 
-        function ($scope, User, Initialization) {
+    .controller('NavBarController', ['$scope', '$state', 'User', 'Initialization', 
+        function ($scope, $state, User, Initialization) {
             $scope.data = {
                 user: null
             };
@@ -12,6 +12,7 @@ angular.module('angularWeb')
 
             $scope.signout = function () {
                 User.signout();
+                $state.go('signin');
             };
         }
     ]);
