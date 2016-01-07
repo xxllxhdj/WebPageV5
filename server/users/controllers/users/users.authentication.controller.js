@@ -14,11 +14,30 @@ var path = require('path'),
  * Signup
  */
 exports.signup = function (req, res) {
-    // For security measurement we remove the roles from the req.body object
-    delete req.body.roles;
+    var usercode = req.body.usercode || '';
+    var password = req.body.password || '';
+    var verifyPassword = req.body.verifyPassword || '';
+
+    if (usercode == '' || password == '') {
+        res.json({
+            status: 'EEEE',
+            desc: '用户名或密码不能为空'
+        });
+        return;
+    }
+    if (password !== verifyPassword) {
+        res.json({
+            status: 'EEEE',
+            desc: '两次输入的密码不一致'
+        });
+        return;
+    }
 
     // Init Variables
-    var user = new User(req.body);
+    var user = new User({
+        usercode: usercode,
+        password: password
+    });
 
     // Then save the user
     user.save(function (err) {
@@ -28,18 +47,22 @@ exports.signup = function (req, res) {
                 desc: errorHandler.getErrorMessage(err)
             });
         } else {
-            login(user.usercode, user.password, false, function (err, obj) {
-                if (err) {
-                    res.json({
-                        status: 'EEEE',
-                        desc: err.message
-                    });
-                } else {
-                    res.json({
-                        status: '0000',
-                        data: obj
-                    });
-                }
+            // login(user.usercode, user.password, false, function (err, obj) {
+            //     if (err) {
+            //         res.json({
+            //             status: 'EEEE',
+            //             desc: err.message
+            //         });
+            //     } else {
+            //         res.json({
+            //             status: '0000',
+            //             data: obj
+            //         });
+            //     }
+            // });
+            res.json({
+                status: '0000',
+                desc: '注册成功'
             });
         }
     });
@@ -72,6 +95,7 @@ function login (usercode, password, rememberme, callback) {
         callback({
             message: '用户名或密码不能为空'
         });
+        return;
     }
     User.findOne({usercode: usercode}, function (err, user) {
         if (err) {

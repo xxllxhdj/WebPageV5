@@ -13,7 +13,7 @@ var mongoose = require('mongoose'),
  * A Validation function for local strategy email
  */
 var validateLocalStrategyEmail = function (email) {
-    return ((this.provider !== 'local' && !this.updated) || validator.isEmail(email));
+    return (!this.updated || validator.isEmail(email));
 };
 
 /**
@@ -24,7 +24,7 @@ var UserSchema = new Schema({
         type: String,
         unique: true,
         trim: true,
-        default: '',
+        //default: '',
         validate: [validateLocalStrategyEmail, '请输入一个合法的邮箱']
     },
     usercode: {

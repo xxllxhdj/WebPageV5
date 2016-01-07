@@ -4,6 +4,9 @@ angular.module('angularWeb')
             var o = {},
                 profile;
 
+            o.signup = function (usercode, password, verifyPassword) {
+                return signup(usercode, password, verifyPassword);
+            };
             o.signin = function (usercode, password, rememberme) {
                 var defer = $q.defer();
 
@@ -63,6 +66,30 @@ angular.module('angularWeb')
 
             return o;
 
+            function signup (usercode, password, verifyPassword) {
+                var defer = $q.defer();
+
+                $http({
+                    method: 'POST',
+                    url: APPCONSTANTS.signupURL,
+                    data: {
+                        usercode: usercode,
+                        password: password,
+                        verifyPassword: verifyPassword
+                    },
+                    timeout: APPCONSTANTS.httpTimeOut
+                }).success(function (result) {
+                    if (result.status === '0000') {
+                        defer.resolve(result);
+                    } else {
+                        defer.reject(result);
+                    }
+                }).error(function (error) {
+                    defer.reject(error);
+                });
+
+                return defer.promise;
+            }
             function signin (usercode, password, rememberme) {
                 var defer = $q.defer();
 
