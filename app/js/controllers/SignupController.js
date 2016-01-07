@@ -8,6 +8,9 @@ angular.module('angularWeb')
                 rememberme: false
             };
 
+            $scope.signin = function () {
+                $state.go('signin');
+            };
             $scope.signup = function () {
             };
         }

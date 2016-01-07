@@ -128,9 +128,6 @@
 
 /*********************************************************signup*******************************************************/
 
-.signup {
-    margin-top: 88px;
-}
 .signup-header {
     background: #6495C6;
     border-radius: 4px 4px 0 0;
@@ -208,48 +205,6 @@
 /*******************************************************userpopover****************************************************/
 
 /******************************************************reset password**************************************************/
-
-.reset-password-bar {
-    background: #000;
-    border: none;
-    height: 60px;
-    border-radius: 0;
-    color: #fff;
-}
-.reset-password-bar .bar-header {
-    float: left;
-}
-.reset-password-bar .navbar-brand {
-    float: left;
-    padding: 20px 15px;
-    font-size: 20px;
-    height: 60px
-}
-.reset-password-bar .bar-text {
-    float: left;
-    margin-right: 15px;
-    margin-left: 15px;
-    padding: 18px 15px;
-    font-size: 18px;
-    height: 60px
-}
-.reset-password-bar .bar-right {
-    float: right;
-}
-.btn-login {
-    background: #fff;
-    border-color: #fff;
-    border-radius: 34px;
-    color: #35bfe3;
-    font-weight: bold;
-    min-width: 60px;
-}
-.btn-login:hover,
-.btn-login:focus {
-    color: #1eaac8;
-    background-color: #fff;
-    border-color: #fff;
-}
 
 .reset-form-container {
     width: 300px;

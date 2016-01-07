@@ -65,6 +65,15 @@ input[type="checkbox"]:focus {
     opacity: 1; 
 }
 
+.navbar-btn {
+    margin-top: 13px;
+    margin-bottom: 13px;
+    background: transparent;
+}
+.navbar-btn:hover {
+    color: #fff;
+}
+
 .submit-btn-group .btn {
     color: #fff;
     background-color: #fea85d;
@@ -78,6 +87,38 @@ input[type="checkbox"]:focus {
 }
 
 /**********************************************************Common******************************************************/
+
+/*********************************************************SecondBar****************************************************/
+
+.second-navbar {
+    background: #000;
+    border: none;
+    height: 60px;
+    border-radius: 0;
+    color: #9d9d9d;
+}
+.second-navbar .bar-header {
+    float: left;
+}
+.second-navbar .navbar-brand {
+    float: left;
+    padding: 20px 15px;
+    font-size: 20px;
+    height: 60px
+}
+.second-navbar .bar-text {
+    float: left;
+    margin-right: 15px;
+    margin-left: 15px;
+    padding: 18px 15px;
+    font-size: 18px;
+    height: 60px
+}
+.second-navbar .bar-right {
+    float: right;
+}
+
+/*********************************************************SecondBar****************************************************/
 
 /*********************************************************loading******************************************************/
 
