@@ -1,16 +1,34 @@
 angular.module('angularWeb')
-    .factory('User', ['$http', '$q', '$cookies', 'Authentication', 'APPCONSTANTS', 
-        function($http, $q, $cookies, Authentication, APPCONSTANTS) {
+    .factory('User', ['$http', '$q', '$cookies', 'Authentication', 'ExtHelp', 'APPCONSTANTS', 
+        function($http, $q, $cookies, Authentication, ExtHelp, APPCONSTANTS) {
             var o = {},
                 profile;
 
             o.signup = function (usercode, password, verifyPassword) {
-                return signup(usercode, password, verifyPassword);
+                return ExtHelp.http({
+                    method: 'POST',
+                    url: APPCONSTANTS.signupURL,
+                    data: {
+                        usercode: usercode,
+                        password: password,
+                        verifyPassword: verifyPassword
+                    },
+                    timeout: APPCONSTANTS.httpTimeOut
+                });
             };
             o.signin = function (usercode, password, rememberme) {
                 var defer = $q.defer();
 
-                signin(usercode, password, rememberme).then(function (result) {
+                ExtHelp.http({
+                    method: 'POST',
+                    url: APPCONSTANTS.signinURL,
+                    data: {
+                        usercode: usercode,
+                        password: password,
+                        rememberme: rememberme
+                    },
+                    timeout: APPCONSTANTS.httpTimeOut
+                }).then(function (result) {
                     Authentication.isAuthenticated = true;
                     if (rememberme) {
                         var date = new Date();
@@ -40,7 +58,11 @@ angular.module('angularWeb')
             o.queryMe = function () {
                 var defer = $q.defer();
 
-                queryMe().then(function (result) {
+                ExtHelp.http({
+                    method: 'GET',
+                    url: APPCONSTANTS.getmeURL,
+                    timeout: APPCONSTANTS.httpTimeOut
+                }).then(function (result) {
                     profile = {
                         username: result.data.username,
                         photo: result.data.photo
@@ -54,111 +76,17 @@ angular.module('angularWeb')
                 return defer.promise;
             };
             o.getAuthCode = function (usercode) {
-                return forgotPassword(usercode);
-            };
-            o.resetPassword = function (token, newPassword, verifyPassword) {
-                return resetPassword(token, newPassword, verifyPassword);
-            };
-
-            o.getProfile = function () {
-                return profile ? angular.copy(profile) : null;
-            };
-
-            return o;
-
-            function signup (usercode, password, verifyPassword) {
-                var defer = $q.defer();
-
-                $http({
-                    method: 'POST',
-                    url: APPCONSTANTS.signupURL,
-                    data: {
-                        usercode: usercode,
-                        password: password,
-                        verifyPassword: verifyPassword
-                    },
-                    timeout: APPCONSTANTS.httpTimeOut
-                }).success(function (result) {
-                    if (result.status === '0000') {
-                        defer.resolve(result);
-                    } else {
-                        defer.reject(result);
-                    }
-                }).error(function (error) {
-                    defer.reject(error);
-                });
-
-                return defer.promise;
-            }
-            function signin (usercode, password, rememberme) {
-                var defer = $q.defer();
-
-                $http({
-                    method: 'POST',
-                    url: APPCONSTANTS.signinURL,
-                    data: {
-                        usercode: usercode,
-                        password: password,
-                        rememberme: rememberme
-                    },
-                    timeout: APPCONSTANTS.httpTimeOut
-                }).success(function (result) {
-                    if (result.status === '0000') {
-                        defer.resolve(result);
-                    } else {
-                        defer.reject(result);
-                    }
-                }).error(function (error) {
-                    defer.reject(error);
-                });
-
-                return defer.promise;
-            }
-            function queryMe () {
-                var defer = $q.defer();
-
-                $http({
-                    method: 'GET',
-                    url: APPCONSTANTS.getmeURL,
-                    timeout: APPCONSTANTS.httpTimeOut
-                }).success(function (result) {
-                    if (result.status === '0000') {
-                        defer.resolve(result);
-                    } else {
-                        defer.reject(result);
-                    }
-                }).error(function (error) {
-                    defer.reject(error);
-                });
-
-                return defer.promise;
-            }
-            function forgotPassword (usercode) {
-                var defer = $q.defer();
-
-                $http({
+                return ExtHelp.http({
                     method: 'POST',
                     url: APPCONSTANTS.forgotPasswordURL,
                     data: {
                         usercode: usercode
                     },
                     timeout: 30000
-                }).success(function (result) {
-                    if (result.status === '0000') {
-                        defer.resolve(result);
-                    } else {
-                        defer.reject(result);
-                    }
-                }).error(function (error) {
-                    defer.reject(error);
                 });
-
-                return defer.promise;
-            }
-            function resetPassword (token, newPassword, verifyPassword) {
-                var defer = $q.defer();
-
-                $http({
+            };
+            o.resetPassword = function (token, newPassword, verifyPassword) {
+                return ExtHelp.http({
                     method: 'POST',
                     url: APPCONSTANTS.resetPasswordURL,
                     data: {
@@ -167,18 +95,15 @@ angular.module('angularWeb')
                         verifyPassword: verifyPassword
                     },
                     timeout: APPCONSTANTS.httpTimeOut
-                }).success(function (result) {
-                    if (result.status === '0000') {
-                        defer.resolve(result);
-                    } else {
-                        defer.reject(result);
-                    }
-                }).error(function (error) {
-                    defer.reject(error);
                 });
+            };
 
-                return defer.promise;
-            }
+            o.getProfile = function () {
+                return profile ? angular.copy(profile) : null;
+            };
+
+            return o;
+            
             function changePassword (oldPassword, newPassword, verifyPassword) {
                 var defer = $q.defer();
 
