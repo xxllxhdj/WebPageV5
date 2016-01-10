@@ -11,6 +11,7 @@ var config = require('../config'),
     compress = require('compression'),
     methodOverride = require('method-override'),
     helmet = require('helmet'),
+    consolidate = require('consolidate'),
     path = require('path');
 
 /**
@@ -79,15 +80,15 @@ module.exports.initMiddleware = function (app) {
 /**
  * Configure view engine
  */
-// module.exports.initViewEngine = function (app) {
-//     // Set swig as the template engine
-//     app.engine('html', consolidate[config.templateEngine]);
+module.exports.initViewEngine = function (app) {
+    // Set swig as the template engine
+    app.engine('html', consolidate[config.templateEngine]);
 
-//     // Set views path and view engine
-//     app.engine('server.view.html', consolidate.swig);
-//     app.set('view engine', 'server.view.html');
-//     app.set('views', './' + config.webDir);
-// };
+    // Set views path and view engine
+    app.engine('server.view.html', consolidate.swig);
+    app.set('view engine', 'server.view.html');
+    //app.set('views', './' + config.webDir);
+};
 
 /**
  * Invoke modules server configuration
@@ -165,7 +166,7 @@ module.exports.init = function (db) {
     this.initMiddleware(app);
 
     // Initialize Express view engine
-    //this.initViewEngine(app);
+    this.initViewEngine(app);
 
     // Initialize Modules configuration
     this.initModulesConfiguration(app);

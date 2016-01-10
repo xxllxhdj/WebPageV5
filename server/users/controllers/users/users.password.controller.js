@@ -31,7 +31,7 @@ exports.forgot = function(req, res, next) {
                             desc: '该用户不存在'
                         });
                     } else {
-                        if (user.email === '') {
+                        if (!user.email) {
                             return res.json({
                                 status: 'EEEE',
                                 desc: '您的账号未绑定邮箱，请联系管理员重置密码'

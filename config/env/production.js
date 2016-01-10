@@ -22,12 +22,12 @@ module.exports = {
         }
     },
     mailer: {
-        from: process.env.MAILER_FROM || '1099647132<1099647132@qq.com>',
+        from: process.env.MAILER_FROM || 'XXL<2132047316@qq.com>',
         options: {
             service: process.env.MAILER_SERVICE_PROVIDER || 'QQ',
             auth: {
-                user: process.env.MAILER_EMAIL_ID || '1099647132@qq.com',
-                pass: process.env.MAILER_PASSWORD || 'djragmquefgxhhag'
+                user: process.env.MAILER_EMAIL_ID || '2132047316@qq.com',
+                pass: process.env.MAILER_PASSWORD || 'sjiftidxiwnqchgc'
             }
         }
     }
